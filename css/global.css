@@ -1,0 +1,343 @@
+/* ========================================= */
+/* 1. CSS RESET & Global Variables           */
+/* ========================================= */
+
+/* Define Color and Font Variables */
+:root {
+    /* Colors: Premium, Modern, Minimalist (Assuming these are your existing colors) */
+    --color-text-dark: #1A1A1A;     /* Deep Charcoal Black */
+    --color-text-light: #F9F9F9;    /* Very Light Off-White */
+    --color-background: #FFFFFF;    /* Clean White */
+    --color-accent-gold: #B8860B;   /* Muted Gold/Bronze */
+    --color-border-light: #E0E0E0;  /* Light Gray for dividers */
+    --color-button-bg: #1A1A1A;
+    --color-button-text: #FFFFFF;
+    --color-footer-bg: #1A1A1A;     /* Dark background for new footer */
+    --color-footer-text: #F9F9F9;
+
+    /* Fonts: Serif & Sans (Assuming Playfair Display and Inter) */
+    --font-serif: 'Playfair Display', serif; 
+    --font-sans: 'Montserrat', sans-serif;        
+}
+
+/* Simple CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* ========================================= */
+/* 2. Typography Styles (Serif & Sans)       */
+/* ========================================= */
+
+/* General Headings (using Serif) */
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500; 
+    line-height: 1.2;
+}
+
+/* Link Base Styling */
+a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-gold);
+}
+
+
+/* ========================================= */
+/* 3. Reusable Components (Buttons, Containers) */
+/* ========================================= */
+
+/* Standard Page Container for content width */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Call To Action Button Styling (Sleek Modern Minimalism) */
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    border: 2px solid var(--color-button-bg);
+    border-radius: 0; 
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: var(--color-text-dark);
+    border-color: var(--color-text-dark);
+}
+
+
+/* ========================================= */
+/* 4. Universal Layout (Header & Footer)     */
+/* ========================================= */
+
+/* --- HEADER --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--color-border-light);
+    background-color: var(--color-background);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo and Brand Name Container */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Inherits from a, but ensures no unwanted underline */
+    color: var(--color-text-dark);
+}
+
+.logo-link img {
+    max-height: 35px; 
+    width: auto;
+    display: block;
+    margin-right: 10px; /* Space between logo and name */
+}
+
+.logo-link h1 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    margin: 0; /* Remove default h1 margin */
+}
+
+/* --- DESKTOP NAVIGATION --- */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--color-accent-gold);
+    border-bottom-color: var(--color-accent-gold);
+}
+
+
+/* --- HAMBURGER ICON STYLING (Hidden on Desktop) --- */
+.hamburger-menu {
+    display: none; 
+    cursor: pointer;
+    z-index: 1001; 
+    padding: 5px;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--color-text-dark);
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+
+/* --- MOBILE MENU OVERLAY STYLING --- */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 999;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.mobile-nav-overlay.open {
+    transform: translateX(0); 
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mobile-nav-overlay li {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobile-nav-overlay a {
+    font-family: var(--font-serif); 
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-text-dark);
+    display: block;
+    padding: 10px;
+}
+
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding-top: 60px; /* Padding only at the top of the main section */
+    font-size: 0.95rem;
+}
+
+.main-footer a {
+    color: var(--color-footer-text);
+}
+
+.main-footer a:hover {
+    color: var(--color-accent-gold);
+}
+
+/* Grid for Contact Info and Links */
+.footer-top-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Contact info gets more width than links */
+    gap: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light divider */
+}
+
+.footer-contact-info {
+    text-align: left;
+}
+
+.footer-logo-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-accent-gold);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.info-block {
+    margin-bottom: 20px;
+}
+
+.info-block h4 {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--color-accent-gold);
+}
+
+/* Social Icons */
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-links img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+	filter: invert(100%);
+    transition: opacity 0.3s ease;
+}
+
+.social-links img:hover {
+    opacity: 1;
+}
+
+/* Footer Links Section */
+.footer-links-section h4 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.footer-links-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links-section li {
+    margin-bottom: 8px;
+}
+
+
+/* Copyright Bar */
+.footer-copyright {
+    padding: 20px 0;
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: #111111; /* Slightly darker bar for contrast */
+}
+
+
+/* ========================================= */
+/* 5. MEDIA QUERIES for Responsiveness       */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    /* Header Changes */
+    .main-nav { display: none; }
+    .hamburger-menu { display: block; }
+    .main-header { padding: 15px 20px; }
+    
+    .logo-link h1 { font-size: 1.4rem; }
+
+    /* Footer Changes */
+    .footer-top-grid {
+        grid-template-columns: 1fr; /* Stack the columns */
+        gap: 40px;
+        padding-bottom: 30px;
+    }
+    
+    .footer-links-section {
+        padding-top: 15px; /* Add space above the links when stacked */
+    }
+}

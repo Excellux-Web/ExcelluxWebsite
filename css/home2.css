@@ -1,0 +1,189 @@
+/* ========================================= */
+/* home2.css - Styles for new Homepage Sections */
+/* ========================================= */
+
+/* --- General Section Titles --- */
+.main-section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--color-text-dark);
+}
+
+.white-text {
+    color: var(--color-text-light);
+}
+
+/* --- 1. MISSION & VISION SECTION --- */
+.mission-vision-section {
+    padding: 80px 0;
+    background-color: var(--color-text-light);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.mission-block {
+    padding: 30px;
+    border: 1px solid var(--color-border-light);
+    background-color: var(--color-background);
+}
+
+.mission-block .section-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-accent-gold);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.mission-block p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+
+/* --- 2. OUR VALUES SECTION --- */
+.values-section {
+    padding: 100px 0;
+    background-color: var(--color-background);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.value-card {
+    padding: 30px 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.value-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    /* Since icons are black PNGs, they blend well with light background */
+}
+
+.value-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--color-text-dark);
+    margin-bottom: 10px;
+}
+
+.value-card p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+
+/* --- 3. WHY CHOOSE US (Counter Section) --- */
+.choose-us-section {
+    background-color: var(--color-text-dark); /* Dark section for high contrast */
+    padding: 80px 0 100px;
+    text-align: center;
+}
+
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.counter-block {
+    padding: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.counter-block:last-child {
+    border-right: none; /* Remove border on the last item */
+}
+
+.counter-number {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-accent-gold);
+    margin-bottom: 5px;
+}
+
+.counter-text {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.gold-cta {
+    /* Custom style for CTA inside a dark section */
+    background-color: var(--color-accent-gold);
+    color: var(--color-text-dark);
+    border-color: var(--color-accent-gold);
+    margin-top: 50px;
+}
+
+.gold-cta:hover {
+    background-color: var(--color-text-light);
+    border-color: var(--color-text-light);
+    color: var(--color-text-dark);
+}
+
+
+/* --- Media Queries --- */
+@media (max-width: 900px) {
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .counter-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    }
+    .counter-block:nth-child(2) {
+        border-right: none; /* Remove border from the second item when it's at the end of a row */
+    }
+    .counter-block {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .counter-block:nth-child(2n) {
+        border-right: none;
+    }
+    .counter-block:nth-child(3),
+    .counter-block:nth-child(4) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .mission-grid {
+        grid-template-columns: 1fr;
+    }
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .counter-grid {
+        grid-template-columns: 1fr; /* Stack all counters */
+    }
+    .counter-block {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .counter-block:last-child {
+        border-bottom: none;
+    }
+}
