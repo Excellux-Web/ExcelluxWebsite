@@ -507,12 +507,13 @@
         function showCongratulationsModal() {
             const expiryDate = getExpiryDate();
             document.getElementById('modalMessage').innerHTML = 
-                `You have won ₹${cashbackAmount} cashback!<br><br>Please collect it from the showroom by <strong>${expiryDate}</strong>`;
+                `You have won ₹${cashbackAmount} cashback!<br><br>Please collect it from the showroom by <strong>${expiryDate}</strong><br><br>Please Take a ScreenShot!`;
             document.getElementById('modal').classList.add('active');
         }
 
         function closeModal() {
             document.getElementById('modal').classList.remove('active');
+			window.location.href = 'index.html';
         }
     </script>
 </body>
